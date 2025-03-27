@@ -32,6 +32,6 @@
 三篇论文的核心主要围绕long context llm inference时产生大量kv cache，针对llm context window不足或者出于推理时延需要对kv进行动态裁剪。其裁剪方式主要依赖各种近邻或者近似的近邻方法。
 
 目前思路与下周方向：
-- 复现三篇论文的方法，比较其在最新模型上的优劣，并分析其存在的问题
+- 复现三篇论文的方法，比较其在最新模型上的优劣，并分析其存在的问题（下周）
 - 针对当前主流模型架构，设计更优的kv cache裁剪方案，在∞Bench和LongBench上去的更好的结果
 - 将kv cache方案与OS和硬件相结合，实现hardware-aware kv cache裁剪
