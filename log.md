@@ -18,10 +18,15 @@
 本周我在本地跑了llama.cpp代码仓库，熟悉了仓库代码的逻辑。
 
 阅读了几篇论文：
+
 [1] InfLLM: Training-Free Long-Context Extrapolation for LLMs with an Efficient Context Memory.
+
 [2] RetrievalAttention: Accelerating Long-Context LLM Inference via Vector Retrieval.
+
 [3] PQCache: Product Quantization-based KVCache for Long Context LLM Inference.
+
 [4] ∞Bench: Extending Long Context Evaluation Beyond 100K Tokens
+
 [5] LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding
 
 三篇论文的核心主要围绕long context llm inference时产生大量kv cache，针对llm context window不足或者出于推理时延需要对kv进行动态裁剪。其裁剪方式主要依赖各种近邻或者近似的近邻方法。
