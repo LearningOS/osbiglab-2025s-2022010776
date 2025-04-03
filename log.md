@@ -35,3 +35,25 @@
 - 复现三篇论文的方法，比较其在最新模型上的优劣，并分析其存在的问题（下周）
 - 针对当前主流模型架构，设计更优的kv cache裁剪方案，在∞Bench和LongBench上去的更好的结果
 - 将kv cache方案与OS和硬件相结合，实现hardware-aware kv cache裁剪
+
+## Week 7
+
+按照上周计划，尝试复现了三篇论文，发现其中三篇各自都有一些缺陷：
+- inf llm：本身kvcache的裁剪是static的 从准确度角度的话就不太好，然后后续从os角度做优化的话空间也比较小。
+- retrieval attention：本身工作并不扎实，他的方法其实很多指标上并没有超过他的baseline，但是他自己依然把自己结果加粗了，很有误导性；同时也缺了一些比较重要的baseline 比如quest这篇；然后还有效率对比，他只和不带kv cache的比较，这是一个显然不合格的baseline。
+- PQCache：本身PQ环节比较繁琐，且并未考虑与硬件的结合。
+
+经过一番搜寻，我认为这篇工作是一个更好的算法：quest[1] 这篇论文实验做的比较扎实，而且充分考虑了硬件配合，做了Page-wise的裁剪。这与vllm[2]这篇所提出的PagedAttention优化结合十分紧密。
+
+另外，本周我与一位在做硬件的同学聊了聊，他正在试图在端侧设备上运行LLM。因此，本周我也花了一定时间在这个具体硬件上，最终总结发现端侧设备的挑战主要是：
+- 内存较小，需要做offloading
+- 算力不足，不能有太长的context
+- 针对特定npu硬件，只支持静态算子，也就是输入形状必须确定，因此不支持变长sequence，必须要做kv cache裁剪，与现在我所在做的工作不谋而合
+
+[1] Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference
+[2] Efficient Memory Management for Large Language Model Serving with PagedAttention
+
+未来计划：
+- 将Quest原本代码在端侧设备上复现，并做可能的改进
+- 结合具体硬件，实现高效kv裁剪
+- 最终在端侧设备上实现人类速度实时高保真token预测
