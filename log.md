@@ -51,6 +51,7 @@
 - 针对特定npu硬件，只支持静态算子，也就是输入形状必须确定，因此不支持变长sequence，必须要做kv cache裁剪，与现在我所在做的工作不谋而合
 
 [1] Quest: Query-Aware Sparsity for Efficient Long-Context LLM Inference
+
 [2] Efficient Memory Management for Large Language Model Serving with PagedAttention
 
 未来计划：
