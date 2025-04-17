@@ -58,3 +58,18 @@
 - 将Quest原本代码在端侧设备上复现，并做可能的改进
 - 结合具体硬件，实现高效kv裁剪
 - 最终在端侧设备上实现人类速度实时高保真token预测
+
+## Week 9
+
+按照上周计划，本周主要的工作是解决硬件适配问题。我重新找了一个能兼容cvitek的tpu驱动的debian build。在这个build上，可以成功找到/dev/cvi-tpu0，如图所示：
+
+![image](https://github.com/user-attachments/assets/bcd4f15f-050d-4886-bc8d-a7ecbe8b969e)
+
+同时，在这个系统上，成功安装了riscv版的torch和riscv，如图所示：
+
+![image](https://github.com/user-attachments/assets/88b25bb6-0e51-4814-a0a1-4243337d9d6c)
+
+下周计划：
+- cpp code base在硬件上debug一下，争取成功接通
+- 训一下模型（这个视情况可能放到下下周）
+
