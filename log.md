@@ -65,7 +65,7 @@
 
 ![image](https://github.com/user-attachments/assets/bcd4f15f-050d-4886-bc8d-a7ecbe8b969e)
 
-同时，在这个系统上，成功安装了riscv版的torch和riscv，如图所示：
+同时，在这个系统上，成功安装了riscv版的torch和numpy，如图所示：
 
 ![image](https://github.com/user-attachments/assets/88b25bb6-0e51-4814-a0a1-4243337d9d6c)
 
