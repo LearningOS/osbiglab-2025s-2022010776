@@ -1,0 +1,6 @@
+torch
+numpy
+datasets
+wandb
+getch
+onnxruntime
